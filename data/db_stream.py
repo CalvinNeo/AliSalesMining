@@ -13,11 +13,11 @@ def pull_db(connection, total):
     for (i, item) in itertools.izip(xrange(total), res):
         if i % percentile == 0:
             print "completing percent %d " % int(i / percentile)
-        pass
+        print item
 
 if __name__ == '__main__':
     connection = MongoClient("mongodb://localhost:27017/")
     # clean_db(connection)
-    ITEMC = 1000
+    ITEMC = 100
     print "querying the top %d items into db" % ITEMC
     pull_db(connection, ITEMC)
