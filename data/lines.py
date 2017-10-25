@@ -22,13 +22,17 @@ class LineFile(object):
                 else:
                     return l
 
-# if __name__ == '__main__':
-#     f = LineFile("user_pay.txt")
-#     i = 0
-#     import time
-#     for l in f:
-#         if i % 100000 == 0:
-#             print i
-#         i += 1
-#     print "final", i
+if __name__ == '__main__':
+    f = LineFile("user_pay.txt")
+    i = 0
+    import time
+    for l in f:
+        if i < 100:
+            print l
+        else:
+            break
+        if i % 100000 == 0:
+            print i
+        i += 1
+    print "final", i
 

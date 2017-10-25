@@ -53,7 +53,7 @@ def clean_db(connection):
 if __name__ == '__main__':
     connection = MongoClient("mongodb://localhost:27017/")
     # clean_db(connection)
-    ITEMC = 1000
+    ITEMC = 10000
     clean_db(connection)
     print "inserting the top %d items into db" % ITEMC
     init_db(connection, ITEMC)

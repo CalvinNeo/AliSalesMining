@@ -25,3 +25,18 @@ hs_err_pid*
 
 *.txt
 *.jar
+
+*.o
+*.obj
+*.pch
+*.exe
+*.a
+*.so
+*.dll
+
+/data/BigSort/bin
+/data/BigSort/obj
+/data/BigSort/shard
+
+*.depend
+*.layout
