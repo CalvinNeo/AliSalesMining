@@ -40,3 +40,8 @@ hs_err_pid*
 
 *.depend
 *.layout
+graph/metastore_db
+*.bin
+*.sorted
+*.bind
+*.merged

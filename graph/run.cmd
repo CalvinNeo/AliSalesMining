@@ -1,0 +1,1 @@
+D:\Programs\spark-2.2.0-bin-hadoop2.7\bin\spark-submit.cmd -class "AliGraphX" --master local[4] ./out/artifacts/graph_jar/graph.jar

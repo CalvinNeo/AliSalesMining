@@ -57,7 +57,8 @@ void do_psort(){
         }
         fclose(fshard);
         fclose(fsort);
-
+        sprintf(buf, "./shard/s%05d.bind", shard_index);
+        remove(buf);
     }
     fout = fopen("./shard/psort.sorted", "wb+");
     fwrite(&shard_count, sizeof shard_count, 1, fout);
@@ -160,6 +161,12 @@ void do_pmerge(){
     fout = fopen("./shard/pmerge.merged", "wb+");
     fwrite(&acc, sizeof acc, 1, fout);
     fclose(fout);
+
+    for(int shard_index = 0; shard_index <= shard_count; shard_index++){
+        fclose(fs[shard_index]);
+        sprintf(buf, "./shard/s%05d.merged", shard_index);
+        remove(buf);
+    }
 }
 
 int main(){
