@@ -46,7 +46,7 @@ def removeSingletons[VD: ClassTag, ED: ClassTag](g: Graph[VD, ED]) = {
 
 val sampled = Gr.vertices.map(v => v._1).sample(false, 0.01, 1729L)
 val degrees = Gr.degrees
-val parGr = removeSingletons(Gr.subgraph(edge_triplet => edge_triplet.attr < 1447322400))
+val parGr = removeSingletons(Gr.subgraph(edge_triplet => edge_triplet.attr < 1447308000))
 parGr.cache()
 println("origin vert count " ++ Gr.vertices.count().toString)
 println("current vert count " ++ parGr.vertices.count().toString)
@@ -89,11 +89,16 @@ def recommendUser(sid: Int) : List[(VertexId, Int)] = {
 }
 def printRecommend(id: Int) = {
     if(id < 9999){
-        val vid = recommendUser(id)(0)._1
-        userdata.filter(x => x.uid == vid).foreach(println)
+        val all_possible = recommendUser(id)
+        all_possible.take(3).foreach(item => {
+            val index = item._1
+            userdata.filter(x => x.uid == index).foreach(println)
+        })
     }else{
-        val vid = recommendShop(id)(0)._1
-        shopdata.filter(x => x.sid == vid).foreach(println)
+        val all_possible = recommendShop(id)
+        all_possible.take(3).foreach(item => {
+            val index = item._1
+            shopdata.filter(x => x.sid == index).foreach(println)
+        })
     }
 }
-dist.vertices.foreach(println)
